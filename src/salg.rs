@@ -44,6 +44,10 @@ impl Vec2 {
     pub fn magnitude(&self) -> f64 {
         (self.x*self.x + self.y*self.y).sqrt()
     }
+    pub fn norm(&self) -> Self {
+        let scaler = 1.0/self.magnitude();
+        self.scale(scaler)
+    }
     pub fn scale(&self, factor: f64) -> Self {
         Self {
             x: self.x * factor,
