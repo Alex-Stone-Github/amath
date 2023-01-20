@@ -35,6 +35,9 @@ impl Matrix {
             elements: new_elements
         })
     }
+    pub fn element_map(&self, func: fn(x: &f64) -> f64) -> Self {
+        Self::new(self.rows, self.columns, self.elements.iter().map(func).collect())
+    }
     pub fn add(a: &Self, b: &Self) -> Result<Self, &'static str> {Self::binary_element_operation(a, b, |a, b| a + b)}
     pub fn sub(a: &Self, b: &Self) -> Result<Self, &'static str> {Self::binary_element_operation(a, b, |a, b| a - b)}
     pub fn mul(a: &Self, b: &Self) -> Result<Self, &'static str> {Self::binary_element_operation(a, b, |a, b| a * b)}
